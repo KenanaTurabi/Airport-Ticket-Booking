@@ -1,0 +1,15 @@
+C:\Users\USER-M\Desktop\c#\project1\Airport Ticket Booking\Airport Ticket Booking\bin\Debug\net6.0\Airport Ticket Booking.exe
+C:\Users\USER-M\Desktop\c#\project1\Airport Ticket Booking\Airport Ticket Booking\bin\Debug\net6.0\Airport Ticket Booking.deps.json
+C:\Users\USER-M\Desktop\c#\project1\Airport Ticket Booking\Airport Ticket Booking\bin\Debug\net6.0\Airport Ticket Booking.runtimeconfig.json
+C:\Users\USER-M\Desktop\c#\project1\Airport Ticket Booking\Airport Ticket Booking\bin\Debug\net6.0\Airport Ticket Booking.dll
+C:\Users\USER-M\Desktop\c#\project1\Airport Ticket Booking\Airport Ticket Booking\bin\Debug\net6.0\Airport Ticket Booking.pdb
+C:\Users\USER-M\Desktop\c#\project1\Airport Ticket Booking\Airport Ticket Booking\obj\Debug\net6.0\Airport Ticket Booking.csproj.AssemblyReference.cache
+C:\Users\USER-M\Desktop\c#\project1\Airport Ticket Booking\Airport Ticket Booking\obj\Debug\net6.0\Airport Ticket Booking.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER-M\Desktop\c#\project1\Airport Ticket Booking\Airport Ticket Booking\obj\Debug\net6.0\Airport Ticket Booking.AssemblyInfoInputs.cache
+C:\Users\USER-M\Desktop\c#\project1\Airport Ticket Booking\Airport Ticket Booking\obj\Debug\net6.0\Airport Ticket Booking.AssemblyInfo.cs
+C:\Users\USER-M\Desktop\c#\project1\Airport Ticket Booking\Airport Ticket Booking\obj\Debug\net6.0\Airport Ticket Booking.csproj.CoreCompileInputs.cache
+C:\Users\USER-M\Desktop\c#\project1\Airport Ticket Booking\Airport Ticket Booking\obj\Debug\net6.0\Airport Ticket Booking.dll
+C:\Users\USER-M\Desktop\c#\project1\Airport Ticket Booking\Airport Ticket Booking\obj\Debug\net6.0\refint\Airport Ticket Booking.dll
+C:\Users\USER-M\Desktop\c#\project1\Airport Ticket Booking\Airport Ticket Booking\obj\Debug\net6.0\Airport Ticket Booking.pdb
+C:\Users\USER-M\Desktop\c#\project1\Airport Ticket Booking\Airport Ticket Booking\obj\Debug\net6.0\Airport Ticket Booking.genruntimeconfig.cache
+C:\Users\USER-M\Desktop\c#\project1\Airport Ticket Booking\Airport Ticket Booking\obj\Debug\net6.0\ref\Airport Ticket Booking.dll
