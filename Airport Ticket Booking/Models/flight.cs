@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace Airport_Ticket_Booking.Models
 {
+    public enum FlightClass { Economy, Business, FirstClass }
+
     internal class Flight
     {
         public int FlightId { get; set; }
         public float Price { get; set; }
         public  DateTime DepartureDate { get; set; }
         public string DepartureCountry { get; set; }
-        public int DestinatioCountry { get; set; }
-        public int DepartureAirport { get; set; }
-        public int ArrivalAirport { get; set; }
-        public enum FlightClass { Economy, Business, FirstClass }
+        public string DestinationCountry { get; set; }
+        public string DepartureAirport { get; set; }
+        public string ArrivalAirport { get; set; }
+        public FlightClass Class { get; set; }
 
     }
 }

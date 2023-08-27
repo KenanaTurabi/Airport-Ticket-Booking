@@ -12,26 +12,30 @@ namespace Airport_Ticket_Booking.Models
         public int PassengerId { get; set; }
         public string Name { get; set; }
 
-        public List<Booking>BookingsList=new List<Booking>();
+        public List<Booking>PassengerBookingsList=new List<Booking>();
         public int BookingId { get; set; }   
 
 
         public void CancleBooking(int BookingId)//passenger extention
         {
-           BookingsList.RemoveAll(booking => booking.BookingId == BookingId);
+            Booking booking = PassengerBookingsList.Where(x => x.BookingId == BookingId).FirstOrDefault();
+            PassengerBookingsList.Remove(booking);
+           // BookingsList.RemoveAll(booking => booking.BookingId == BookingId);
         }
 
-        public void ModifyBooking(List<Booking> bookings, int BookingId, int PassengerId, DateTime NewDateTime,int FligthId)
+        public void ModifyBooking(int BookingId)
         {
-            var BookingToModify = bookings.FirstOrDefault(book => book.PassengerId == PassengerId && book.BookingId == BookingId);
+            var BookingToModify = PassengerBookingsList.FirstOrDefault(book =>book.BookingId == BookingId);
             if (BookingToModify == null)
             {
-                Console.WriteLine($"This Booking not exist ");
+                Console.WriteLine($"This Booking does not exist ");
             }
             else
             {
-                BookingToModify.FlightId = FligthId;
-                BookingToModify.BookingDateTime = NewDateTime;
+                Console.WriteLine("Enter new flight id");
+                BookingToModify.FlightId =Int32.Parse( Console.ReadLine());
+                Console.WriteLine("Enter new passenger name");
+                BookingToModify.PassengerName = Console.ReadLine();
             }
 
 
@@ -43,16 +47,15 @@ namespace Airport_Ticket_Booking.Models
             booking.PassengerId = PassengerId;
             booking.PassengerName = Name;
             booking.FlightId = FlightId;
-            BookingId++;
             booking.BookingId = BookingId;
-            BookingsList.Add(booking);
+            PassengerBookingsList.Add(booking);
 
         }
 
         public void ViewBookings() 
         {
             Console.WriteLine("This is Your Booking list: ");
-            BookingsList.ForEach(booking => Console.WriteLine($"{booking}\n"));
+            PassengerBookingsList.ForEach(booking => Console.WriteLine($"{booking}\n"));
         }
     }
 }
