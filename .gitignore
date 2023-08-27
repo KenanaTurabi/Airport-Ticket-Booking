@@ -1,0 +1,13 @@
+.vs/
+/bin/
+/obj/
+/.csproject
+.vs/
+/bin/
+/obj/
+*.csproject
+*.dll
+*.json
+*.pdb
+*.cache
+*.txt
