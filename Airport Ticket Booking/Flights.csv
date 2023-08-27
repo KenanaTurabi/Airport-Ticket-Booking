@@ -1,4 +1,0 @@
-FlightId,DepartureCountry,DestinationCountry,DepartureDate,DepartureAirport,ArrivalAirport,Price
-1,USA,France,2023-08-20 10:00,JFK,CDG,500.00
-2,UK,Germany,2023-08-21 09:30,LHR,FRA,400.00
-3,Germany,Italy,2023-08-22 12:45,FRA,FCO,300.00

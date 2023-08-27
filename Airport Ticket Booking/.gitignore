@@ -1,0 +1,10 @@
+.vs
+bin/
+obj/
+.csproj
+/.vs
+*.dll
+*.json
+*.pdb
+*.cache
+*.txt
