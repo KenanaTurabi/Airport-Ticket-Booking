@@ -12,7 +12,11 @@ namespace Airport_Ticket_Booking.Models
         public int BookingId { get; set; }
         public int PassengerId { get; set; }
         public int FlightId { get; set; }
-        public string? PassengerName { get; set; }
         public DateTime BookingDateTime { get; set; }
+
+        public override string ToString()
+        {
+            return $"BookingId: {BookingId}, FlightId: {FlightId}, PassengerId: {PassengerId},BookingDateTime: {BookingDateTime} ";
+        }
     }
 }

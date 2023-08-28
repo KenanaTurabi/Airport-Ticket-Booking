@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Airport_Ticket_Booking.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace Airport_Ticket_Booking.Models
 {
-    public enum FlightClass { Economy, Business, FirstClass }
 
     internal class Flight
     {
@@ -17,7 +17,7 @@ namespace Airport_Ticket_Booking.Models
         public string DestinationCountry { get; set; }
         public string DepartureAirport { get; set; }
         public string ArrivalAirport { get; set; }
-        public FlightClass Class { get; set; }
+        public FlightClassEnum FlightClass { get; set; }
 
     }
 }

@@ -10,6 +10,7 @@ namespace Airport_Ticket_Booking.Models
     internal class Passenger
     {
         public int PassengerId { get; set; }
+
         public string Name { get; set; }
 
         public List<Booking>PassengerBookingsList=new List<Booking>();
@@ -33,9 +34,7 @@ namespace Airport_Ticket_Booking.Models
             else
             {
                 Console.WriteLine("Enter new flight id");
-                BookingToModify.FlightId =Int32.Parse( Console.ReadLine());
-                Console.WriteLine("Enter new passenger name");
-                BookingToModify.PassengerName = Console.ReadLine();
+                BookingToModify.FlightId =Int32.Parse(Console.ReadLine());
             }
 
 
@@ -45,17 +44,19 @@ namespace Airport_Ticket_Booking.Models
         {
             Booking booking = new Booking();
             booking.PassengerId = PassengerId;
-            booking.PassengerName = Name;
+            BookingId++;
             booking.FlightId = FlightId;
             booking.BookingId = BookingId;
+            booking.BookingDateTime=DateTime.Now;
             PassengerBookingsList.Add(booking);
-
+            Console.WriteLine("your booking done successfully");
+            
         }
-
+       
         public void ViewBookings() 
         {
             Console.WriteLine("This is Your Booking list: ");
-            PassengerBookingsList.ForEach(booking => Console.WriteLine($"{booking}\n"));
+            PassengerBookingsList.ForEach(booking => Console.WriteLine(booking.ToString()));
         }
     }
 }
