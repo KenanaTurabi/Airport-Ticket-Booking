@@ -14,50 +14,6 @@ namespace Airport_Ticket_Booking.Models
         public string Name { get; set; }
 
         public List<Booking>PassengerBookingsList=new List<Booking>();
-        public int BookingId { get; set; }   
-
-
-        public void CancleBooking(int BookingId)//passenger extention
-        {
-            Booking booking = PassengerBookingsList.Where(x => x.BookingId == BookingId).FirstOrDefault();
-            PassengerBookingsList.Remove(booking);
-           // BookingsList.RemoveAll(booking => booking.BookingId == BookingId);
-        }
-
-        public void ModifyBooking(int BookingId)
-        {
-            var BookingToModify = PassengerBookingsList.FirstOrDefault(book =>book.BookingId == BookingId);
-            if (BookingToModify == null)
-            {
-                Console.WriteLine($"This Booking does not exist ");
-            }
-            else
-            {
-                Console.Write("Enter new flight id: ");
-                BookingToModify.flight.FlightId =Int32.Parse(Console.ReadLine());
-            }
-
-
-        }
-
-        public void BookFlight(Flight flight,List<Booking>AllBookingsList)
-        {
-            Booking booking = new Booking();
-            booking.PassengerId = PassengerId;
-            BookingId++;
-            booking.flight = flight;
-            booking.BookingId = BookingId;
-            booking.BookingDateTime=DateTime.Now;
-            PassengerBookingsList.Add(booking);
-            AllBookingsList.Add(booking);
-            Console.WriteLine("your booking done successfully");
-            
-        }
-       
-        public void ViewBookings() 
-        {
-            Console.WriteLine("This is Your Booking list: ");
-            PassengerBookingsList.ForEach(booking => Console.WriteLine(booking.ToString()));
-        }
+        public int BookingId { get; set; }        
     }
 }

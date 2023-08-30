@@ -9,7 +9,6 @@ namespace Airport_Ticket_Booking.Models
 {
     internal class Manager
     {
-
         public void FilterByPrice(float price, List<Booking> BookingList)
         {
             var filteredBookingsByPrice = BookingList.Where(book => book.flight.Price == price).ToList();
@@ -24,10 +23,7 @@ namespace Airport_Ticket_Booking.Models
                     Console.WriteLine(book.ToString());
                 }
             }
-
-
         }
-
         public void FilterByDestinationCountry(string DestinationCountry, List<Booking> BookingList)
         {
             var filteredBookingsByDestinationCountry = BookingList.Where(book => book.flight.DestinationCountry == DestinationCountry).ToList();
@@ -39,8 +35,7 @@ namespace Airport_Ticket_Booking.Models
                 {
                     Console.WriteLine(book.ToString());
                 }
-            }
-            
+            }           
         }
         public void FilterByDepartureCountry(string DepartureCountry, List<Booking> BookingList)
         {
@@ -53,8 +48,7 @@ namespace Airport_Ticket_Booking.Models
                 {
                     Console.WriteLine(book.ToString());
                 }
-            }
-            
+            }           
         }
         public void FilterByArrivalAirport(string ArrivalAirport, List<Booking> BookingList)
         {
@@ -84,8 +78,7 @@ namespace Airport_Ticket_Booking.Models
                 {
                     Console.WriteLine(book.ToString());
                 }
-            }
-           
+            }         
         }
         public void FilterByFlightClass(FlightClassEnum flightClass, List<Booking> BookingList)
         {
@@ -100,8 +93,7 @@ namespace Airport_Ticket_Booking.Models
                 {
                     Console.WriteLine(book.ToString());
                 }
-            }
-           
+            }          
         }
         public void FilterByFlightDateTime(DateTime dateTime, List<Booking> BookingList)
         {
@@ -109,7 +101,6 @@ namespace Airport_Ticket_Booking.Models
             if (filteredBookingsByDateTime.Count() == 0)
             {
                 Console.WriteLine($"This DateTime does not exist in the bookings list ");
-
             }
             else
             {
@@ -117,12 +108,8 @@ namespace Airport_Ticket_Booking.Models
                 {
                     Console.WriteLine(book.ToString());
                 }
-            }
-            
+            }        
         }
-        
-
-
         public void FilterBookings(SearchParameter filterBookingsAccordingTo, List<Booking> BookingList)
         {
             if (filterBookingsAccordingTo == SearchParameter.Price)
@@ -160,12 +147,8 @@ namespace Airport_Ticket_Booking.Models
             {
                 Console.Write("plz enter a DateTime: ");
                 FilterByFlightDateTime(DateTime.Parse(Console.ReadLine()), BookingList);
-            }
-            
-           
+            }                 
         }
-
-
     }
 }
 
