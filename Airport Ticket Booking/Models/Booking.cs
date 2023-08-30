@@ -9,14 +9,15 @@ namespace Airport_Ticket_Booking.Models
 {
     internal class Booking
     {
+        public Flight flight = new Flight();
         public int BookingId { get; set; }
         public int PassengerId { get; set; }
-        public int FlightId { get; set; }
+       // public int FlightId { get; set; }
         public DateTime BookingDateTime { get; set; }
 
         public override string ToString()
         {
-            return $"BookingId: {BookingId}, FlightId: {FlightId}, PassengerId: {PassengerId},BookingDateTime: {BookingDateTime} ";
+            return $"\nBookingId: {BookingId}, flight: {flight.ToString()}, PassengerId: {PassengerId},BookingDateTime: {BookingDateTime}\n";
         }
     }
 }

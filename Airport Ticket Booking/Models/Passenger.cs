@@ -33,22 +33,23 @@ namespace Airport_Ticket_Booking.Models
             }
             else
             {
-                Console.WriteLine("Enter new flight id");
-                BookingToModify.FlightId =Int32.Parse(Console.ReadLine());
+                Console.Write("Enter new flight id: ");
+                BookingToModify.flight.FlightId =Int32.Parse(Console.ReadLine());
             }
 
 
         }
 
-        public void BookFlight(int FlightId)
+        public void BookFlight(Flight flight,List<Booking>AllBookingsList)
         {
             Booking booking = new Booking();
             booking.PassengerId = PassengerId;
             BookingId++;
-            booking.FlightId = FlightId;
+            booking.flight = flight;
             booking.BookingId = BookingId;
             booking.BookingDateTime=DateTime.Now;
             PassengerBookingsList.Add(booking);
+            AllBookingsList.Add(booking);
             Console.WriteLine("your booking done successfully");
             
         }

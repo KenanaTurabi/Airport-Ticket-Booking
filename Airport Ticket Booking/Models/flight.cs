@@ -18,6 +18,10 @@ namespace Airport_Ticket_Booking.Models
         public string DepartureAirport { get; set; }
         public string ArrivalAirport { get; set; }
         public FlightClassEnum FlightClass { get; set; }
+        public override string ToString()
+        {
+            return $"FlightId: {FlightId}, Price: {Price}, DepartureDate: {DepartureDate},DepartureCountry: {DepartureCountry},DestinationCountry: {DestinationCountry},DepartureAirport: {DepartureAirport},ArrivalAirport: {ArrivalAirport},FlightClass,{FlightClass} ";
+        }
 
     }
 }
