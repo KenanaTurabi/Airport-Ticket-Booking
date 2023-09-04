@@ -13,7 +13,7 @@ namespace Airport_Ticket_Booking.Models
 
         public string Name { get; set; }
 
-        public List<Booking>PassengerBookingsList=new List<Booking>();
+        public List<Booking>PassengerBookingsList = new List<Booking>();
         public int BookingId { get; set; }        
     }
 }

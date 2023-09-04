@@ -1,4 +1,5 @@
 ﻿using Airport_Ticket_Booking.Enums;
+using Airport_Ticket_Booking.Menu;
 using Airport_Ticket_Booking.Models;
 using CsvHelper;
 using CsvHelper.Configuration;
@@ -9,53 +10,15 @@ namespace Airport_Ticket_Booking
 {
     internal class Program
     {
-        private const int ViewAllFlights=1;
-        private const int BookTicket=2;
-        private const int EditTicket=3;
-        private const int CancelBooking=4;
-        private const int ViewAllBookings=5;
-        private const int FilterBookingsByPrice=6;
-        private const int FilterBookingsByDepartureCountry = 7;
-        private const int FilterBookingsByDestinationCountry = 8;
-        private const int FilterBookingsByDepartureDate = 9;
-        private const int FilterBookingsByDepartureAirport = 10;
-        private const int FilterBookingsByArrivalAirport = 11;
-        private const int FilterBookingsByClass = 12;
-        private const int Exit= 13;
-
-        public static void Menu()
-        {
-            Console.WriteLine($"----Airport Ticket Booking -----");
-            Console.WriteLine();
-            Console.WriteLine($"----Passenger Menu -----");
-            Console.WriteLine();
-            Console.WriteLine($"{ViewAllFlights}- see all flights");
-            Console.WriteLine($"{BookTicket}- book a ticket");
-            Console.WriteLine($"{EditTicket}- edit a ticket");
-            Console.WriteLine($"{CancelBooking}- cancel a booking");
-            Console.WriteLine($"{ViewAllBookings}- see all of your bookings");
-            Console.WriteLine();
-            Console.WriteLine($"----Manager Menu -----");
-            Console.WriteLine();
-            Console.WriteLine($"{FilterBookingsByPrice}- filter bookings by price");
-            Console.WriteLine($"{FilterBookingsByDepartureCountry}- filter bookings by DepartureCountry");
-            Console.WriteLine($"{FilterBookingsByDestinationCountry}- filter bookings by DestinationCountry");
-            Console.WriteLine($"{FilterBookingsByDepartureDate}- filter bookings by DepartureDate");
-            Console.WriteLine($"{FilterBookingsByDepartureAirport}- filter bookings by DepartureAirport");
-            Console.WriteLine($"{FilterBookingsByArrivalAirport}- filter bookings by ArrivalAirport");
-            Console.WriteLine($"{FilterBookingsByClass}- filter bookings by class");
-            Console.WriteLine($"{Exit}- Exit");
-            Console.Write($"plz enter your choice:  ");
-            
-        }
         static void Main(string[] args)
         {
+            AirportTicketMenu Menu=new AirportTicketMenu();
             List<Booking> AllBookingsList = new List<Booking>();
             Passenger passenger = new Passenger();
             Manager manager = new Manager();
             while (true)
             {
-                Menu();
+                AirportTicketMenu.ViewMenu();
                 int choice = Int32.Parse(Console.ReadLine());
                 string csvFilePath = "Flights.csv";
                 using (var reader = new StreamReader(csvFilePath))
@@ -70,8 +33,7 @@ namespace Airport_Ticket_Booking
                         UpdatedFlights.Add(flight);
 
                     }
-                   
-                    if (choice == ViewAllFlights)
+                    if (choice == AirportTicketMenu.ViewAllFlights)
                     {
                         foreach (var flight in UpdatedFlights)
                         {
@@ -86,7 +48,7 @@ namespace Airport_Ticket_Booking
 
                         }
                     }
-                    else if (choice == BookTicket)
+                    else if (choice == AirportTicketMenu.BookTicket)
                     {
                         Console.Write("plz enter flight id to complete booking process:");
                         int EnteredFlightId =Int32.Parse(Console.ReadLine());
@@ -101,7 +63,7 @@ namespace Airport_Ticket_Booking
 
                         }
                     }
-                    else if (choice == EditTicket)
+                    else if (choice == AirportTicketMenu.EditTicket)
                     {
                         Console.Write("plz enter booking id to edit the booking:");
                         int BookingIdToEdit = Int32.Parse(Console.ReadLine());
@@ -110,53 +72,53 @@ namespace Airport_Ticket_Booking
 
                         
                     }
-                    else if (choice == CancelBooking)
+                    else if (choice == AirportTicketMenu.CancelBooking)
                     {
                         Console.Write("plz enter booking id to cancle the booking:");
                         passenger.CancleBooking(Int32.Parse(Console.ReadLine()));
                     }
-                    else if (choice == ViewAllBookings)
+                    else if (choice == AirportTicketMenu.ViewAllBookings)
                     {
                         passenger.ViewBookings();
 
                     }
-                    else if (choice == FilterBookingsByPrice)
+                    else if (choice == AirportTicketMenu.FilterBookingsByPrice)
                     {
                         manager.FilterBookings(SearchParameter.Price, AllBookingsList);
                         
                     }
-                    else if(choice == FilterBookingsByDepartureCountry)
+                    else if(choice == AirportTicketMenu.FilterBookingsByDepartureCountry)
                     {
                         manager.FilterBookings(SearchParameter.DepartureCountry, AllBookingsList);
 
                     }
-                    else if (choice == FilterBookingsByDestinationCountry)
+                    else if (choice == AirportTicketMenu.FilterBookingsByDestinationCountry)
                     {
                         manager.FilterBookings(SearchParameter.DestinationCountry, AllBookingsList);
 
                     }
-                    else if (choice == FilterBookingsByDepartureDate)
+                    else if (choice == AirportTicketMenu.FilterBookingsByDepartureDate)
                     {
                         manager.FilterBookings(SearchParameter.DepartureDate, AllBookingsList);
 
                     }
-                    else if (choice == FilterBookingsByDepartureAirport)
+                    else if (choice ==  AirportTicketMenu.FilterBookingsByDepartureAirport)
                     {
                         manager.FilterBookings(SearchParameter.DepartureAirport, AllBookingsList);
 
                     }
-                    else if (choice == FilterBookingsByArrivalAirport)
+                    else if (choice == AirportTicketMenu.FilterBookingsByArrivalAirport)
                     {
                         manager.FilterBookings(SearchParameter.ArrivalAirport, AllBookingsList);
 
                     }
-                    else if (choice == FilterBookingsByClass)
+                    else if (choice == AirportTicketMenu.FilterBookingsByClass)
                     {
                         manager.FilterBookings(SearchParameter.Class, AllBookingsList);
 
                     }
 
-                    else if(choice== Exit)
+                    else if(choice == AirportTicketMenu.Exit)
                     {
                         Console.WriteLine("EXIT");
                         break;
