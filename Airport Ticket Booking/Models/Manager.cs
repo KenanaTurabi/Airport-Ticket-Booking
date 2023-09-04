@@ -11,7 +11,7 @@ namespace Airport_Ticket_Booking.Models
     {
         public void FilterByPrice(float price, List<Booking> BookingList)
         {
-            var filteredBookingsByPrice = BookingList.Where(book => book.flight.Price == price).ToList();
+            var filteredBookingsByPrice = BookingList.Where(book => book.flight.GetPrice() == price).ToList();
             if (filteredBookingsByPrice.Count() == 0)
             {
                 Console.WriteLine($"This price value does not exist in the booking list");

@@ -61,16 +61,27 @@ namespace Airport_Ticket_Booking
                 using (var reader = new StreamReader(csvFilePath))
                 using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
                 {
-                    var flights = csv.GetRecords<Flight>();
+                    var flights = csv.GetRecords<Flight>().ToList();
+                    var UpdatedFlights = new List<Flight>();
+                     
+                    foreach(var flight in flights)
+                    {
+                        flight.SetPriceAccordingToType();
+                        UpdatedFlights.Add(flight);
+
+                    }
+                   
                     if (choice == ViewAllFlights)
                     {
-                        foreach (var flight in flights)
+                        foreach (var flight in UpdatedFlights)
                         {
                             Console.WriteLine($"FlightId: {flight.FlightId}");
                             Console.WriteLine($"--------");
+
+
                             Console.WriteLine($"DepartureCountry: {flight.DepartureCountry}, " +
                                 $"DestinationCountry: {flight.DestinationCountry}, DepartureDate: {flight.DepartureDate}, DepartureAirport: {flight.DepartureAirport}," +
-                                $" ArrivalAirport: {flight.ArrivalAirport},FlightClass: {flight.FlightClass}, Price: {flight.Price}");
+                                $" ArrivalAirport: {flight.ArrivalAirport},FlightClass: {flight.FlightClass}, Price: {flight.GetPrice()}");
                             Console.WriteLine();
 
                         }
@@ -79,7 +90,7 @@ namespace Airport_Ticket_Booking
                     {
                         Console.Write("plz enter flight id to complete booking process:");
                         int EnteredFlightId =Int32.Parse(Console.ReadLine());
-                        Flight flightToBook=flights.Where(f => f.FlightId == EnteredFlightId).FirstOrDefault();
+                        Flight flightToBook= UpdatedFlights.Where(f => f.FlightId == EnteredFlightId).FirstOrDefault();
                         if (flightToBook ==null)
                         {
                             Console.WriteLine("No flight with this id !");
@@ -94,7 +105,7 @@ namespace Airport_Ticket_Booking
                     {
                         Console.Write("plz enter booking id to edit the booking:");
                         int BookingIdToEdit = Int32.Parse(Console.ReadLine());
-                        passenger.ModifyBooking(BookingIdToEdit,flights);
+                        passenger.ModifyBooking(BookingIdToEdit, UpdatedFlights);
                         
 
                         

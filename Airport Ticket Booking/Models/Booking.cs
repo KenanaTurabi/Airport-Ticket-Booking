@@ -12,7 +12,6 @@ namespace Airport_Ticket_Booking.Models
         public Flight flight = new Flight();
         public int BookingId { get; set; }
         public int PassengerId { get; set; }
-       // public int FlightId { get; set; }
         public DateTime BookingDateTime { get; set; }
 
         public override string ToString()

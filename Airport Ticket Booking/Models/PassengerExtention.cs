@@ -33,9 +33,7 @@ namespace Airport_Ticket_Booking.Models
                 else
                 {
                     Console.WriteLine("this flight id does not exist!");
-                }
-
-                
+                }             
             }
         }
 
