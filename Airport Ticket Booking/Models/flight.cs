@@ -12,7 +12,7 @@ namespace Airport_Ticket_Booking.Models
     internal class Flight
     {
         public int FlightId { get; set; }
-        private float Price { get; set; }
+        private float Price;
         public  DateTime DepartureDate { get; set; }
         public string DepartureCountry { get; set; }
         public string DestinationCountry { get; set; }
@@ -20,21 +20,27 @@ namespace Airport_Ticket_Booking.Models
         public string ArrivalAirport { get; set; }
         public FlightClassEnum FlightClass { get; set; }
 
+
+        Dictionary<FlightClassEnum, float> PriceDictionary = new Dictionary<FlightClassEnum, float>()
+            {
+            { FlightClassEnum.Business,1000 },
+            { FlightClassEnum.Economy,2000 },
+            { FlightClassEnum.FirstClass,3000 }
+
+
+            };
         public void SetPriceAccordingToType() 
         {
-            float price=0;
-            if (FlightClass == FlightClassEnum.Business)
+            if (PriceDictionary.TryGetValue(FlightClass, out float price))
             {
-               Price= 1000;
-            }
-            else if (FlightClass == FlightClassEnum.Economy)
-            {
-                Price= 2000;
+                Price = price;
             }
             else
             {
-                Price=  3000;
+                Price = 0; 
             }
+
+
         }
         public float GetPrice()
         {
