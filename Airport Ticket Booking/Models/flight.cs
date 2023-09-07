@@ -20,15 +20,13 @@ namespace Airport_Ticket_Booking.Models
         public string ArrivalAirport { get; set; }
         public FlightClassEnum FlightClass { get; set; }
 
-
         Dictionary<FlightClassEnum, float> PriceDictionary = new Dictionary<FlightClassEnum, float>()
             {
             { FlightClassEnum.Business,1000 },
             { FlightClassEnum.Economy,2000 },
             { FlightClassEnum.FirstClass,3000 }
-
-
             };
+
         public void SetPriceAccordingToType() 
         {
             if (PriceDictionary.TryGetValue(FlightClass, out float price))
@@ -39,17 +37,11 @@ namespace Airport_Ticket_Booking.Models
             {
                 Price = 0; 
             }
-
-
         }
         public float GetPrice()
         {
             return Price;
-        }
-       
-
-
-       
+        }   
 public override string ToString()
         {
             return $"FlightId: {FlightId}, Price: {Price}, DepartureDate: {DepartureDate},DepartureCountry: {DepartureCountry},DestinationCountry: {DestinationCountry},DepartureAirport: {DepartureAirport},ArrivalAirport: {ArrivalAirport},FlightClass,{FlightClass} ";

@@ -12,7 +12,9 @@ namespace Airport_Ticket_Booking
     {
         static void Main(string[] args)
         {
-            AirportTicketMenu Menu=new AirportTicketMenu();
+            ReadDataFromCsv readDataFromCsv = new ReadDataFromCsv();
+            ReadDataFromCsv.ReadFromCsv();
+            AirportTicketMenu Menu =new AirportTicketMenu();
             List<Booking> AllBookingsList = new List<Booking>();
             Passenger passenger = new Passenger();
             Manager manager = new Manager();
@@ -20,39 +22,31 @@ namespace Airport_Ticket_Booking
             {
                 AirportTicketMenu.ViewMenu();
                 int choice = Int32.Parse(Console.ReadLine());
-                string csvFilePath = "Flights.csv";
-                using (var reader = new StreamReader(csvFilePath))
-                using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
-                {
-                    var flights = csv.GetRecords<Flight>().ToList();
-                    var UpdatedFlights = new List<Flight>();
-                     
-                    foreach(var flight in flights)
+
+
+                    foreach (var flight in ReadDataFromCsv.flights)
                     {
                         flight.SetPriceAccordingToType();
-                        UpdatedFlights.Add(flight);
+                    ReadDataFromCsv.UpdatedFlights.Add(flight);
 
                     }
                     if (choice == AirportTicketMenu.ViewAllFlights)
                     {
-                        foreach (var flight in UpdatedFlights)
+                        foreach (var flight in ReadDataFromCsv.UpdatedFlights)
                         {
                             Console.WriteLine($"FlightId: {flight.FlightId}");
                             Console.WriteLine($"--------");
-
-
                             Console.WriteLine($"DepartureCountry: {flight.DepartureCountry}, " +
                                 $"DestinationCountry: {flight.DestinationCountry}, DepartureDate: {flight.DepartureDate}, DepartureAirport: {flight.DepartureAirport}," +
                                 $" ArrivalAirport: {flight.ArrivalAirport},FlightClass: {flight.FlightClass}, Price: {flight.GetPrice()}");
                             Console.WriteLine();
-
                         }
                     }
                     else if (choice == AirportTicketMenu.BookTicket)
                     {
                         Console.Write("plz enter flight id to complete booking process:");
                         int EnteredFlightId =Int32.Parse(Console.ReadLine());
-                        Flight flightToBook= UpdatedFlights.Where(f => f.FlightId == EnteredFlightId).FirstOrDefault();
+                        Flight flightToBook= ReadDataFromCsv.UpdatedFlights.Where(f => f.FlightId == EnteredFlightId).FirstOrDefault();
                         if (flightToBook ==null)
                         {
                             Console.WriteLine("No flight with this id !");
@@ -67,10 +61,8 @@ namespace Airport_Ticket_Booking
                     {
                         Console.Write("plz enter booking id to edit the booking:");
                         int BookingIdToEdit = Int32.Parse(Console.ReadLine());
-                        passenger.ModifyBooking(BookingIdToEdit, UpdatedFlights);
-                        
-
-                        
+                        passenger.ModifyBooking(BookingIdToEdit, ReadDataFromCsv.UpdatedFlights);
+                                             
                     }
                     else if (choice == AirportTicketMenu.CancelBooking)
                     {
@@ -128,7 +120,7 @@ namespace Airport_Ticket_Booking
                         Console.WriteLine("EXIT");
                         break;
                     }                                   
-                }
+                
             }         
         }
     }
