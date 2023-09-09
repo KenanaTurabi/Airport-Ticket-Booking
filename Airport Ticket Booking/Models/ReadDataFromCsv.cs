@@ -15,9 +15,9 @@ namespace Airport_Ticket_Booking.Models
 
         public static List<Flight> UpdatedFlights;
 
-        public static void ReadFromCsv()
+        public static void ReadFromCsv(string filePath)
         {
-           using (var reader = new StreamReader("Flights.csv"))
+           using (var reader = new StreamReader(filePath))
            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
         {
                 flights = csv.GetRecords<Flight>().ToList();

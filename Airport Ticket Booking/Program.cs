@@ -13,7 +13,8 @@ namespace Airport_Ticket_Booking
         static void Main(string[] args)
         {
             ReadDataFromCsv readDataFromCsv = new ReadDataFromCsv();
-            ReadDataFromCsv.ReadFromCsv();
+            String filePath = "Flights.csv";
+            ReadDataFromCsv.ReadFromCsv(filePath);
             AirportTicketMenu Menu =new AirportTicketMenu();
             Manager manager = new Manager();
             while (true)
