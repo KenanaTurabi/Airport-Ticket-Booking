@@ -14,29 +14,28 @@ namespace Airport_Ticket_Booking
         {
             ReadDataFromCsv readDataFromCsv = new ReadDataFromCsv();
             String filePath = "Flights.csv";
-            ReadDataFromCsv.ReadFromCsv(filePath);
+            var flights= readDataFromCsv.ReadFromCsv(filePath);
             AirportTicketMenu Menu =new AirportTicketMenu();
             Manager manager = new Manager();
             while (true)
             {
                 AirportTicketMenu.ViewMenu();
                 int choice = Int32.Parse(Console.ReadLine());
-                    foreach (var flight in ReadDataFromCsv.flights)
+                    foreach (var flight in flights)
                     {
                         flight.SetPriceAccordingToType();
-                        ReadDataFromCsv.UpdatedFlights.Add(flight);
                     }
                     if (choice == AirportTicketMenu.ViewAllFlights)
                     {
-                      DataManpulation.ViewAllFlights();
+                      DataManpulation.ViewAllFlights(flights);
                     }
                     else if (choice == AirportTicketMenu.BookTicket)
                     {
-                        DataManpulation.BookTicket();
+                        DataManpulation.BookTicket(flights);
                     }
                     else if (choice == AirportTicketMenu.EditTicket)
                     {
-                      DataManpulation.EditTicket();
+                      DataManpulation.EditTicket(flights);
                     }
                     else if (choice == AirportTicketMenu.CancelBooking)
                     {

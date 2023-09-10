@@ -10,9 +10,9 @@ namespace Airport_Ticket_Booking.Models
     {
         public static List<Booking> AllBookingsList = new List<Booking>();
         public static Passenger passenger = new Passenger();
-        public static void ViewAllFlights()
+        public static void ViewAllFlights(List<Flight> flights)
         {
-            foreach (var flight in ReadDataFromCsv.UpdatedFlights)
+            foreach (var flight in flights)
             {
                 Console.WriteLine($"FlightId: {flight.FlightId}");
                 Console.WriteLine($"--------");
@@ -22,11 +22,11 @@ namespace Airport_Ticket_Booking.Models
                 Console.WriteLine();
             }
         }
-        public static void BookTicket()
+        public static void BookTicket(List<Flight> flights)
         {
             Console.Write("plz enter flight id to complete booking process:");
             int EnteredFlightId = Int32.Parse(Console.ReadLine());
-            Flight flightToBook = ReadDataFromCsv.UpdatedFlights.Where(f => f.FlightId == EnteredFlightId).FirstOrDefault();
+            Flight flightToBook =flights.Where(f => f.FlightId == EnteredFlightId).FirstOrDefault();
             if (flightToBook == null)
             {
                 Console.WriteLine("No flight with this id !");
@@ -37,11 +37,11 @@ namespace Airport_Ticket_Booking.Models
 
             }
         }
-        public static void EditTicket()
+        public static void EditTicket(List<Flight> flights)
         {
             Console.Write("plz enter booking id to edit the booking:");
             int BookingIdToEdit = Int32.Parse(Console.ReadLine());
-            passenger.ModifyBooking(BookingIdToEdit, ReadDataFromCsv.UpdatedFlights);
+            passenger.ModifyBooking(BookingIdToEdit, flights);
         }
         public static void CancelBooking()
         {
