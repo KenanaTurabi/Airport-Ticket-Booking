@@ -31,15 +31,21 @@ namespace Airport_Ticket_Booking
                     }
                     else if (choice == AirportTicketMenu.BookTicket)
                     {
-                        DataManpulation.BookTicket(flights);
+                    Console.Write("plz enter flight id to complete booking process:");
+                    int FlightId = Int32.Parse(Console.ReadLine());
+                    DataManpulation.BookTicket(flights,FlightId);
                     }
                     else if (choice == AirportTicketMenu.EditTicket)
                     {
-                      DataManpulation.EditTicket(flights);
+                    Console.Write("plz enter booking id to edit the booking:");
+                    int BookingIdToEdit = Int32.Parse(Console.ReadLine());
+                    DataManpulation.EditTicket(flights, BookingIdToEdit);
                     }
                     else if (choice == AirportTicketMenu.CancelBooking)
                     {
-                      DataManpulation.CancelBooking();
+                    Console.Write("plz enter booking id to cancle the booking:");
+                    int BookingId = Int32.Parse(Console.ReadLine());
+                    DataManpulation.CancelBooking(BookingId);
                     }
                     else if (choice == AirportTicketMenu.ViewAllBookings)
                     {

@@ -22,11 +22,9 @@ namespace Airport_Ticket_Booking.Models
                 Console.WriteLine();
             }
         }
-        public static void BookTicket(List<Flight> flights)
+        public static void BookTicket(List<Flight> flights, int FlightId)
         {
-            Console.Write("plz enter flight id to complete booking process:");
-            int EnteredFlightId = Int32.Parse(Console.ReadLine());
-            Flight flightToBook =flights.Where(f => f.FlightId == EnteredFlightId).FirstOrDefault();
+            Flight flightToBook =flights.Where(f => f.FlightId ==FlightId).FirstOrDefault();
             if (flightToBook == null)
             {
                 Console.WriteLine("No flight with this id !");
@@ -37,16 +35,13 @@ namespace Airport_Ticket_Booking.Models
 
             }
         }
-        public static void EditTicket(List<Flight> flights)
+        public static void EditTicket(List<Flight> flights,int BookingIdToEdit)
         {
-            Console.Write("plz enter booking id to edit the booking:");
-            int BookingIdToEdit = Int32.Parse(Console.ReadLine());
             passenger.ModifyBooking(BookingIdToEdit, flights);
         }
-        public static void CancelBooking()
+        public static void CancelBooking(int BookingId)
         {
-            Console.Write("plz enter booking id to cancle the booking:");
-            passenger.CancleBooking(Int32.Parse(Console.ReadLine()));
+            passenger.CancleBooking(BookingId);
         }
         public static void ViewAllBookings()
         {
