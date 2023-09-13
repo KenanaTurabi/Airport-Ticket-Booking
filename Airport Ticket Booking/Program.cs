@@ -13,6 +13,8 @@ namespace Airport_Ticket_Booking
         static void Main(string[] args)
         {
             ReadDataFromCsv readDataFromCsv = new ReadDataFromCsv();
+            Passenger passenger=new Passenger() ;
+            DataManpulation data = new DataManpulation(passenger);
             String filePath = "Flights.csv";
             var flights= readDataFromCsv.ReadFromCsv(filePath);
             AirportTicketMenu Menu =new AirportTicketMenu();
