@@ -14,7 +14,7 @@ namespace Airport_Ticket_Booking
         {
             ReadDataFromCsv readDataFromCsv = new ReadDataFromCsv();
             Passenger passenger=new Passenger() ;
-            DataManpulation data = new DataManpulation(passenger);
+            DataManpulation dataManpulation = new DataManpulation(passenger);
             String filePath = "Flights.csv";
             var flights= readDataFromCsv.ReadFromCsv(filePath);
             AirportTicketMenu Menu =new AirportTicketMenu();
@@ -29,29 +29,29 @@ namespace Airport_Ticket_Booking
                     }
                     if (choice == AirportTicketMenu.ViewAllFlights)
                     {
-                      DataManpulation.ViewAllFlights(flights);
+                    dataManpulation.ViewAllFlights(flights);
                     }
                     else if (choice == AirportTicketMenu.BookTicket)
                     {
                     Console.Write("plz enter flight id to complete booking process:");
                     int FlightId = Int32.Parse(Console.ReadLine());
-                    DataManpulation.BookTicket(flights,FlightId);
+                    dataManpulation.BookTicket(flights,FlightId);
                     }
                     else if (choice == AirportTicketMenu.EditTicket)
                     {
                     Console.Write("plz enter booking id to edit the booking:");
                     int BookingIdToEdit = Int32.Parse(Console.ReadLine());
-                    DataManpulation.EditTicket(flights, BookingIdToEdit);
+                    dataManpulation.EditTicket(flights, BookingIdToEdit);
                     }
                     else if (choice == AirportTicketMenu.CancelBooking)
                     {
                     Console.Write("plz enter booking id to cancle the booking:");
                     int BookingId = Int32.Parse(Console.ReadLine());
-                    DataManpulation.CancelBooking(BookingId);
+                    dataManpulation.CancelBooking(BookingId);
                     }
                     else if (choice == AirportTicketMenu.ViewAllBookings)
                     {
-                       DataManpulation.ViewAllBookings();
+                    dataManpulation.ViewAllBookings();
                     }
                     else if (choice == AirportTicketMenu.FilterBookingsByPrice)
                     {
