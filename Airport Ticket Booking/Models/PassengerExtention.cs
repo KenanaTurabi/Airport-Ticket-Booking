@@ -25,8 +25,8 @@ namespace Airport_Ticket_Booking.Models
             {
                 Console.Write("Enter new flight id: ");
                 int flightId = Int32.Parse(Console.ReadLine());
-                var checkIfExist = flights.Where(flight => flight.FlightId == flightId).ToList();
-                if (checkIfExist.Any())
+                var checkIfExist = flights.Any(flight => flight.FlightId == flightId);
+                if (checkIfExist)
                 {
                     BookingToModify.flight.FlightId = flightId;
                 }

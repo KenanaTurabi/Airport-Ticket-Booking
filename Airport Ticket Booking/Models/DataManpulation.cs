@@ -9,10 +9,10 @@ namespace Airport_Ticket_Booking.Models
     internal class DataManpulation
     {
         public static List<Booking> AllBookingsList = new List<Booking>();
-        private readonly Passenger Passenger;
+        private readonly Passenger _passenger;
         public DataManpulation(Passenger passenger)
         {
-            Passenger = passenger;
+            _passenger = passenger;
 
         }
         public void ViewAllFlights(List<Flight> flights)
@@ -36,21 +36,21 @@ namespace Airport_Ticket_Booking.Models
             }
             else
             {
-                Passenger.BookFlight(flightToBook, AllBookingsList);
+                _passenger.BookFlight(flightToBook, AllBookingsList);
 
             }
         }
         public void EditTicket(List<Flight> flights,int BookingIdToEdit)
         {
-            Passenger.ModifyBooking(BookingIdToEdit, flights);
+            _passenger.ModifyBooking(BookingIdToEdit, flights);
         }
         public void CancelBooking(int BookingId)
         {
-            Passenger.CancleBooking(BookingId);
+            _passenger.CancleBooking(BookingId);
         }
         public void ViewAllBookings()
         {
-            Passenger.ViewBookings();
+            _passenger.ViewBookings();
         }
     }
 }
